@@ -1,4 +1,4 @@
-# 🧠 Explainable Brain Tumor Segmentation
+# Explainable Brain Tumor Segmentation
 
 ```text
 ██████╗ ██████╗  █████╗ ██╗███╗   ██╗
