@@ -1,5 +1,9 @@
 # Explainable Brain Tumor Segmentation
 
+> An explainable deep learning framework for automated brain tumor segmentation from MRI scans using EfficientNet-B2, U-Net, and Grad-CAM.
+
+---
+
 ```text
 ██████╗ ██████╗  █████╗ ██╗███╗   ██╗
 ██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║
@@ -25,134 +29,69 @@
 
 ---
 
-## 📖 Description
+## Overview
 
-**Explainable Brain Tumor Segmentation** is a deep learning framework for automated brain tumor segmentation from MRI scans. The proposed model combines an **EfficientNet-B2 encoder** with a **U-Net decoder** to accurately localize tumor regions while preserving fine anatomical details through skip connections.
+Brain tumor segmentation plays a critical role in computer-aided diagnosis, treatment planning, and disease monitoring. Manual delineation of tumor boundaries from Magnetic Resonance Imaging (MRI) scans is labor-intensive, time-consuming, and subject to inter-observer variability.
 
-To improve transparency and clinical trust, the framework integrates **Grad-CAM (Gradient-weighted Class Activation Mapping)**, which generates visual explanations highlighting the regions that influence the model's predictions. The model is trained using a **hybrid Binary Cross-Entropy (BCE) and Dice Loss** function, enabling robust learning on imbalanced medical imaging datasets.
+This repository presents an end-to-end deep learning framework for automated brain tumor segmentation that combines an EfficientNet-B2 encoder with a U-Net decoder for accurate pixel-level localization. To improve transparency and clinical interpretability, Grad-CAM is integrated to generate visual explanations highlighting the regions that influence the model's predictions.
 
-This repository includes the complete implementation of the framework, covering **data preprocessing, model training, evaluation, Grad-CAM visualization, and performance analysis**, providing a reproducible pipeline for explainable AI in brain tumor segmentation.
-
----
-
-## 🚀 Key Highlights
-
-- 🧠 Automated brain tumor segmentation from MRI images
-- ⚡ EfficientNet-B2 encoder for powerful feature extraction
-- 🏥 U-Net decoder for precise tumor localization
-- 🔥 Grad-CAM explainability for interpretable predictions
-- 📊 Hybrid BCE + Dice Loss for improved segmentation accuracy
-- 📈 Evaluation using Dice Score, IoU, Precision, Recall, and Accuracy
-- 🔬 Designed for trustworthy AI-assisted clinical decision support
-- 📚 Research-oriented implementation with reproducible experiments
+The framework is optimized using a hybrid Binary Cross-Entropy (BCE) and Dice Loss function, enabling robust learning on highly imbalanced medical imaging datasets while maintaining high segmentation accuracy.
 
 ---
 
-## 🛠️ Technology Stack
+## Key Features
+
+- Automated brain tumor segmentation from MRI images
+- EfficientNet-B2 encoder for hierarchical feature extraction
+- U-Net decoder with skip connections for precise localization
+- Grad-CAM based explainability
+- Hybrid BCE + Dice Loss optimization
+- Comprehensive evaluation metrics
+- End-to-end reproducible training and evaluation pipeline
+
+---
+
+## System Architecture
 
 ```text
-MRI Images
-      │
-      ▼
-Image Preprocessing
-      │
-      ▼
-EfficientNet-B2 Encoder
-      │
-      ▼
-Bottleneck Features
-      │
-      ▼
-U-Net Decoder
-      │
-      ▼
-Tumor Segmentation Mask
-      │
-      ├────────► Performance Evaluation
-      │
-      └────────► Grad-CAM Heatmap
-                    │
-                    ▼
-          Explainable AI Visualization
+                 MRI Image
+                     │
+                     ▼
+              Image Preprocessing
+                     │
+                     ▼
+          EfficientNet-B2 Encoder
+                     │
+                     ▼
+            Multi-scale Features
+                     │
+             Skip Connections
+                     │
+                     ▼
+               U-Net Decoder
+                     │
+                     ▼
+          Tumor Segmentation Mask
+              │                │
+              ▼                ▼
+      Performance         Grad-CAM
+       Evaluation      Visual Explanation
 ```
 
 ---
 
-
-# ✨ Features
-
-- 🧠 Automated Brain Tumor Segmentation
-- ⚡ EfficientNet-B2 Encoder for Robust Feature Extraction
-- 🎯 U-Net Decoder for Precise Tumor Localization
-- 🔥 Grad-CAM Explainability
-- 📊 BCE + Dice Hybrid Loss
-- 📈 Comprehensive Evaluation Metrics
-- 🏥 Clinically Interpretable Predictions
-- 🚀 End-to-End Deep Learning Pipeline
-
----
-
-# 🏗 Architecture Overview
+## Repository Structure
 
 ```text
-MRI Image
-    │
-    ▼
-Preprocessing
-(Resize, Normalize)
-    │
-    ▼
-EfficientNet-B2 Encoder
-    │
-    ▼
-Skip Connections
-    │
-    ▼
-U-Net Decoder
-    │
-    ▼
-Segmentation Mask
-    │
-    ├────────► Grad-CAM Heatmap
-    │
-    ▼
-Explainable Tumor Segmentation
-```
-
----
-
-# 📂 Project Structure
-
-```text
-Explainable-Brain-Tumor-Segmentation/
+Explainable-Brain-Tumor-Segmentation
 │
 ├── dataset/
-│   ├── train/
-│   ├── validation/
-│   └── test/
-│
 ├── models/
-│   ├── efficientnet_unet.py
-│   └── gradcam.py
-│
 ├── training/
-│   └── train.py
-│
 ├── evaluation/
-│   └── evaluate.py
-│
 ├── results/
-│   ├── segmentation/
-│   ├── gradcam/
-│   ├── metrics/
-│   └── checkpoints/
-│
 ├── paper/
-│   └── Research_Paper.pdf
-│
 ├── presentation/
-│   └── Presentation.pdf
-│
 ├── requirements.txt
 ├── README.md
 └── LICENSE
@@ -160,17 +99,16 @@ Explainable-Brain-Tumor-Segmentation/
 
 ---
 
-# 📦 Installation
+## Installation
 
-Clone the repository:
+Clone the repository.
 
 ```bash
-git clone https://github.com/yourusername/Explainable-Brain-Tumor-Segmentation.git
-
+git clone https://github.com/<username>/Explainable-Brain-Tumor-Segmentation.git
 cd Explainable-Brain-Tumor-Segmentation
 ```
 
-Install all dependencies:
+Install the required packages.
 
 ```bash
 pip install -r requirements.txt
@@ -178,120 +116,94 @@ pip install -r requirements.txt
 
 ---
 
-# 🛠 Requirements
+## Dataset
 
-- Python 3.10+
-- TensorFlow / PyTorch
-- Keras
-- NumPy
-- OpenCV
-- Matplotlib
-- Pandas
-- Pillow
-- Scikit-learn
-- tqdm
-- Grad-CAM
+The project uses the **Brain Tumor MRI Dataset: Segmentation and Classification**.
 
----
+Dataset Statistics
 
-# 📁 Dataset
+| Property | Value |
+|-----------|-------|
+| Images | ~5,000 |
+| Segmentation Masks | ~2,700 |
+| Classes | Glioma, Meningioma, Pituitary, No Tumor |
+| Input Resolution | 256 × 256 |
 
-Download the Brain Tumor MRI Dataset from Kaggle.
-
-Dataset contains:
-
-- ~5,000 MRI Images
-- ~2,700 Pixel-Level Segmentation Masks
-
-Classes:
-
-- Glioma
-- Meningioma
-- Pituitary Tumor
-- No Tumor
-
-Arrange the dataset as follows:
+Expected directory structure:
 
 ```text
 dataset/
-
-    train/
-        images/
-        masks/
-
-    validation/
-        images/
-        masks/
-
-    test/
-        images/
-        masks/
+├── train/
+│   ├── images/
+│   └── masks/
+├── validation/
+│   ├── images/
+│   └── masks/
+└── test/
+    ├── images/
+    └── masks/
 ```
 
 ---
 
-# 🚀 Train the Model
+## Training
 
-Run the following command:
+Train the segmentation model.
 
 ```bash
 python train.py
 ```
 
-The training script will:
+The training pipeline performs:
 
-- Load MRI images and segmentation masks
-- Preprocess the data
-- Build the EfficientNet-B2 + U-Net model
-- Train using BCE + Dice Loss
-- Save the best-performing model checkpoint
-- Record training history and metrics
+- Data preprocessing
+- Model initialization
+- Optimization using BCE + Dice Loss
+- Checkpoint generation
+- Metric logging
 
 ---
 
-# 📊 Evaluate the Model
+## Evaluation
 
-Run:
+Evaluate the trained model.
 
 ```bash
 python evaluate.py
 ```
 
-The evaluation script computes:
+Generated outputs include:
 
 - Dice Score
-- Intersection over Union (IoU)
+- IoU
 - Precision
 - Recall
 - F1-Score
 - Accuracy
-- Confusion Matrix
-- Segmentation Predictions
-- Grad-CAM Visualizations
+- Segmentation masks
+- Performance reports
+- Grad-CAM visualizations
 
 ---
 
-# 🔥 Generate Grad-CAM Visualizations
+## Explainability
 
-To visualize model explanations, run:
+Grad-CAM is integrated into the inference pipeline to visualize the regions responsible for the segmentation output.
 
-```bash
-python gradcam.py
-```
+Generated visualizations include:
 
-Outputs include:
-
-- Original MRI Image
-- Predicted Segmentation Mask
-- Grad-CAM Heatmap
-- Overlay of MRI and Heatmap
+- Original MRI image
+- Ground truth mask
+- Predicted segmentation
+- Grad-CAM heatmap
+- Overlay visualization
 
 ---
 
-# 📈 Model Configuration
+## Model Configuration
 
 | Parameter | Value |
-|------------|-------|
+|-----------|------:|
 | Backbone | EfficientNet-B2 |
 | Decoder | U-Net |
 | Input Size | 256 × 256 |
@@ -304,68 +216,22 @@ Outputs include:
 
 ---
 
-# 📈 Performance
+## Results
 
 | Metric | Score |
-|----------|--------|
+|---------|------:|
 | Dice Score | **0.9457** |
 | IoU | **0.8986** |
 | Precision | **0.9484** |
 | Recall | **0.9445** |
-| F1-Score | **0.9464** |
+| F1 Score | **0.9464** |
 | Accuracy | **0.9692** |
 
-The proposed EfficientNet-B2 + U-Net framework outperforms baseline architectures across major segmentation metrics while providing explainable predictions through Grad-CAM.
+The proposed EfficientNet-B2 U-Net framework achieves strong segmentation performance while maintaining model interpretability through Grad-CAM.
 
 ---
 
-# 📷 Sample Output
-
-The framework produces:
-
-```text
-Input MRI
-      │
-      ▼
-Predicted Tumor Mask
-      │
-      ▼
-Grad-CAM Heatmap
-      │
-      ▼
-Overlay Visualization
-```
-
----
-
-# 🧠 Explainable AI
-
-Unlike conventional deep learning models that operate as black boxes, this framework integrates **Grad-CAM** to visualize the image regions responsible for the model's predictions.
-
-This improves:
-
-- Clinical transparency
-- Model interpretability
-- Trust in AI-assisted diagnosis
-- Decision support for radiologists
-
----
-
-# 📄 Research Paper
-
-This work presents an explainable deep learning framework combining:
-
-- EfficientNet-B2
-- U-Net
-- Grad-CAM
-
-to achieve accurate and interpretable brain tumor segmentation from MRI images.
-
----
-
-# 📚 Citation
-
-If you use this project in your research, please cite:
+## Citation
 
 ```bibtex
 @article{beniwal2026brainsegmentation,
@@ -378,41 +244,42 @@ If you use this project in your research, please cite:
 
 ---
 
-# 📄 License
+## License
 
-This project is licensed under the **MIT License**.
-
-See the `LICENSE` file for details.
+This project is released under the MIT License.
 
 ---
 
-## 👨‍💻 Authors
+## Authors
 
-**Kunal Singh Beniwal**  
+**Kunal Singh Beniwal**
+
 School of Computer Science and Engineering  
 Vellore Institute of Technology
 
-**Arshia Sarkar**  
+**Arshia Sarkar**
+
 School of Computer Science and Engineering  
 Vellore Institute of Technology
 
-**Shubham Kansara**  
+**Shubham Kansara**
+
 School of Computer Science and Engineering  
 Vellore Institute of Technology
 
-**Dr. Arpita Ghosh** *(Supervisor)*  
+**Dr. Arpita Ghosh**  
+Project Supervisor  
 School of Computer Science and Engineering  
 Vellore Institute of Technology
 
 ---
 
-## ⭐ Acknowledgements
+## Acknowledgements
 
-- Vellore Institute of Technology (VIT)
+- Vellore Institute of Technology
 - Kaggle Brain Tumor MRI Dataset
 - EfficientNet
 - U-Net
 - Grad-CAM
 - PyTorch
 - TensorFlow
-- OpenCV
